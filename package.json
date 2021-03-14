@@ -1,5 +1,5 @@
 {
-  "name": "module-13-challenge-orm",
+  "name": "e_commerce_backend",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -11,10 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@work.github.com:coding-boot-camp/module-13-challenge-orm.git"
+    "url": "git@github.com:RaquelLee/e_commerce_backend.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Raquel Scofield",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.3"
