@@ -3,14 +3,13 @@ const { Tag, Product, ProductTag } = require('../../models');
 
 // The `/api/tags` endpoint
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const tags = await Tag.findAll();
+    const tags = await Tag.findAll({ include: Product });
     res.status(200).json(tags);
   } catch (err) {
     res.status(500).json(err);
-  }  // be sure to include its associated Product data
-  include: [{ model: Product}]
+  } 
 
 });
 
@@ -46,7 +45,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', (req, res) => {
   Tag.update(
     {
-      // All the fields you can update and the data attached to the request body.
+      tag_name: req.params.body
     },
     {
       where: {
@@ -55,7 +54,6 @@ router.put('/:id', (req, res) => {
     }
   )
     .then((updatedTag) => {
-      // Sends the updated book as a json response
       res.json(updatedTag);
     })
     .catch((err) => res.json(err));
