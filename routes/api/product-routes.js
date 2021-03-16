@@ -43,7 +43,13 @@ router.post('/', (req, res) => {
       tagIds: [1, 2, 3, 4]
     }
   */
-  Product.create(req.body)
+  Product.create({
+    product_name: req.params.body,
+    price: req.params.body,
+    stock: req.params.body,
+    tagIds: req.params.body
+  }
+    )
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
       if (req.body.tagIds.length) {
@@ -68,12 +74,17 @@ router.post('/', (req, res) => {
 // update product
 router.put('/:id', (req, res) => {
   // update product data
-  Product.update(req.body, {
+  Product.update({
+    product_name:req.params.body,
+    price:req.params.body,
+    stock:req.params.body,
+    category_id:req.params.body
+  }, {
     where: {
       id: req.params.id,
     },
   })
-    .then((product) => {
+    .then((req) => {
       // find all associated tags from ProductTag
       return ProductTag.findAll({ where: { product_id: req.params.id } });
     })
