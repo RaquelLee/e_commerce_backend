@@ -4,11 +4,8 @@ const { Category, Product } = require('../../models');
 // The `/api/categories` endpoint
 
 router.get('/', async (req, res) => {
-  // find all categories
-  // be sure to include its associated Products
-  include: [{ model: Product}]
   try {
-    const categories = await Category.findAll();
+    const categories = await Category.findAll({Product});
     res.status(200).json(categories);
   } catch (err) {
     res.status(500).json(err);
@@ -20,7 +17,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const categoryData = await Category.findByPk(req.params.id, {
-      include: [{ model: Products}]
+      include: [{ model: Product}]
         //through: Table, as: 'params' 
     });
 
@@ -49,7 +46,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', (req, res) => {
   Category.update(
     {
-      // All the fields you can update and the data attached to the request body.
+      category_name: req.params.body
     },
     {
       where: {
@@ -58,7 +55,6 @@ router.put('/:id', (req, res) => {
     }
   )
     .then((updatedCategory) => {
-      // Sends the updated book as a json response
       res.json(updatedCategory);
     })
     .catch((err) => res.json(err));
