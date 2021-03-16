@@ -5,7 +5,8 @@ const { Tag, Product, ProductTag } = require('../../models');
 
 router.get('/', async (req, res) => {
   try {
-    const tags = await Tag.findAll({ include: Product });
+    const tags = await Tag.findAll({  include: [{ model: Product, ProductTag, as: 'tags_product' }] 
+  });
     res.status(200).json(tags);
   } catch (err) {
     res.status(500).json(err);
@@ -17,9 +18,8 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Product data
 router.get('/:id', async (req, res) => {
   try {
-    const tagData = await Tag.findByPk(req.params.id, {
-      include: [{ model: Product}]
-    });
+    const tagData = await Tag.findByPk(req.params.id, {  include: [{ model: Product, ProductTag, as: 'tags_product'}]}
+    );
 
     if (!tagData) {
       res.status(404).json({ message: 'No tag found with this id!' });
@@ -34,7 +34,10 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const tagData = await Tag.create(req.body);
+    const tagData = await Tag.create(
+      {
+      tag_name: req.params.body
+    });
     res.status(200).json(tagData);
   } catch (err) {
     res.status(400).json(err);
