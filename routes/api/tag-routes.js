@@ -2,7 +2,8 @@ const router = require('express').Router();
 const { Tag, Product, ProductTag } = require('../../models');
 
 // The `/api/tags` endpoint
-
+// baseballl hat showing after run seed
+//tags matching w unexpected products-? check db
 router.get('/', async (req, res) => {
   try {
     const tags = await Tag.findAll({  include: [{ model: Product, ProductTag, as: 'tags_product' }] 
@@ -19,6 +20,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const tagData = await Tag.findByPk(req.params.id, {  include: [{ model: Product, ProductTag, as: 'tags_product'}]}
+    // this as: is working
     );
 
     if (!tagData) {
@@ -46,10 +48,7 @@ router.post('/', async (req, res) => {
 
   // update a tag's name by its `id` value
 router.put('/:id', (req, res) => {
-  Tag.update(
-    {
-      tag_name: req.params.body
-    },
+  Tag.update(req.body,
     {
       where: {
         id: req.params.id

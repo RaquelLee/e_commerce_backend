@@ -6,8 +6,9 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 // get all products
 router.get('/', async (req, res) => {
   // find all products
+  //tags not showing
   try {
-    const products = await Product.findAll({Category, Tag});
+    const products = await Product.findAll({include: [{ model: Category, Tag, ProductTag}]});
     res.status(200).json(products);
   } catch (err) {
     res.status(500).json(err);
@@ -16,11 +17,14 @@ router.get('/', async (req, res) => {
 
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
+  //as not returning associated tag data
 router.get('/:id', async (req, res) => {
   try {
     const productData = await Product.findByPk(req.params.id, {
       //include is a join
-      include: [{ model: Category, Tag}]
+      include: [{ model: Category, Tag, ProductTag
+        // ,as: 'products_tag'
+        }]
     });
 
     if (!productData) {
@@ -69,17 +73,11 @@ router.post('/', (req, res) => {
 // update product
 router.put('/:id', (req, res) => {
   // update product data
-  Product.update({
-    product_name:req.params.body,
-    price:req.params.body,
-    stock:req.params.body,
-    category_id:req.params.body
-  }, {
+  Product.update(req.body, {
     where: {
       id: req.params.id,
-    },
-    }
-  )
+    }//category_id, tagIds
+    })
     .then((product) => {
       // find all associated tags from ProductTag
       return ProductTag.findAll({ where: { product_id: req.params.id } });
