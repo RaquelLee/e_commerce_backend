@@ -7,8 +7,8 @@ E-commerce site backend using MySQL workbench to create a database, Sequelize fo
 ## ToC
 * [Technologies](#Technologies-Used)
 * [Installation](#Installation)
-* [Usage](###:cinema:Usage)
-* [Credits](##:busts_in_silhouette:Credits)
+* [Usage](#Usage)
+* [Credits](#Credits)
 * [License](#License)
 
 ## Technologies Used 
@@ -40,12 +40,12 @@ node server
 ```
 
 
-## :cinema: Usage
+## Usage
 ![functionalitygif](https://github.com/RaquelLee/e_commerce_backend/blob/main/assets/images/ecommbackend.gif?raw=true)
 
 [View Video](https://drive.google.com/file/d/1U8ZK8ZQW2Wpcvhyr_3KsiL22R6LUw8C1/view)
 
-## :busts_in_silhouette: Credits 
+## Credits 
 Raquel Scofield ![followme](https://img.shields.io/github/followers/raquellee?label=Follow&style=social)
 
 [:eyes: Raquel's Portfolio](https://raquellee.github.io/)
