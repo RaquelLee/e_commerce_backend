@@ -7,8 +7,8 @@ E-commerce site backend using MySQL workbench to create a database, Sequelize fo
 ## ToC
 * [Technologies](#Technologies-Used)
 * [Installation](#Installation)
-* [Usage](###-:cinema:-Usage)
-* [Credits](##-:busts_in_silhouette:-Credits)
+* [Usage](###:cinema:Usage)
+* [Credits](##:busts_in_silhouette:Credits)
 * [License](#License)
 
 ## Technologies Used 
