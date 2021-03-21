@@ -7,16 +7,10 @@
 * Sequelize
 * Node.js
 
-## Installation
-This application can be invoked by using the following command:
-
-```bash
-
-```
 ## :cinema: Walkthrough Video
-![functionalitygif]()
+![functionalitygif](https://github.com/RaquelLee/e_commerce_backend/blob/main/assets/images/ecommbackend.gif?raw=true)
 
-[View Video]()
+[View Video](https://drive.google.com/file/d/1U8ZK8ZQW2Wpcvhyr_3KsiL22R6LUw8C1/view)
 
 ## :busts_in_silhouette:  Credits 
 Raquel Scofield ![followme](https://img.shields.io/github/followers/raquellee?label=Follow&style=social)
